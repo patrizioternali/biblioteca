@@ -77,4 +77,8 @@ public class UtenteService {
         Optional<Utente> optional = repository.findById(id);
         return optional.orElse(null);
     }
+
+    public Utente findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
 }

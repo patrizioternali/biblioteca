@@ -3,7 +3,6 @@ package it.ternali.biblioteca.controller;
 import it.ternali.biblioteca.controller.service.UtenteService;
 import it.ternali.biblioteca.model.Ruolo;
 import it.ternali.biblioteca.model.Utente;
-import it.ternali.biblioteca.model.validators.AddValidatorUser;
 import it.ternali.biblioteca.model.validators.RegistrationValidatorUser;
 import it.ternali.biblioteca.model.validators.UpdateValidatorUser;
 import org.springframework.beans.BeanUtils;
@@ -18,11 +17,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin/gestione")
-public class AdminController {
+public class AdminUtenteController {
 
     private final UtenteService service;
 
-    public AdminController(UtenteService service) {
+    public AdminUtenteController(UtenteService service) {
         this.service = service;
     }
 
@@ -36,10 +35,8 @@ public class AdminController {
 
     @GetMapping("/utenti/delete/{id}")
     public ModelAndView eliminaUtente(@PathVariable("id") Long id) {
-        ModelAndView modelAndView = new ModelAndView("gestione_utenti");
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/gestione/utenti");
         service.deleteById(id);
-        List<Utente> lista_utenti = service.findAll();
-        modelAndView.addObject("lista_utenti", lista_utenti);
         return modelAndView;
     }
 
@@ -56,7 +53,7 @@ public class AdminController {
     public ModelAndView modificaUtente(@Valid @ModelAttribute("utente_modify") UpdateValidatorUser updateValidatorUser,
                                  BindingResult result, @PathVariable("id") Long id) {
         if (result.hasErrors()) {
-            ModelAndView modelAndView = new ModelAndView("modifica_utente");
+            ModelAndView modelAndView = new ModelAndView("redirect:/admin/gestione/modifica/" + id);
             modelAndView.addObject("error", true);
             System.out.println("Errore durante la modifica.");
             return modelAndView;

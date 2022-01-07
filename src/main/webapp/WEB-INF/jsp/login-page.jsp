@@ -22,8 +22,12 @@
                     <label for="password" class="sr-only">Password</label>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                 </p>
-                <input name="_csrf" type="hidden" value="b069403a-8787-4e9a-a25b-9551c7cb1ffe">
+                <p>
+                    <a href="/registercheck">Registrati</a>
+                </p>
+                <input name="_csrf" type="hidden" value="${_csrf.token}">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                <%--b069403a-8787-4e9a-a25b-9551c7cb1ffe--%>
             </form>
         </div>
     </body>

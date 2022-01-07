@@ -33,6 +33,9 @@
                     <label for="date" class="sr-only">Data di nascita</label>
                     <form:input type="date" id="date" name="date" class="form-control" placeholder="Data di nascita" path="dataDiNascita" />
                 </p>
+                <p>
+                    <a href="/login">Login</a>
+                </p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Registrati</button>
             </form:form>
         </div>

@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "libro")
@@ -14,7 +13,7 @@ public class Libro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "titolo")
     private String titolo;
     @Column(name = "autore")
@@ -23,20 +22,27 @@ public class Libro {
     @JoinColumn(name = "genere_id")
     private Genere genere;
     @Column(name = "anno")
-    private LocalDate anno;
+    private Integer anno;
     @Column(name = "stato")
     private String stato;
-    private String image;
+    private String immagine;
 
     public Libro() {
     }
 
-    public Libro(int id, String titolo, String autore, Genere genere, LocalDate anno, String stato) {
-        this.id = id;
+    public Libro(String titolo, String autore, Genere genere, Integer anno, String stato, String immagine) {
         this.titolo = titolo;
         this.autore = autore;
         this.genere = genere;
         this.anno = anno;
         this.stato = stato;
+        this.immagine = immagine;
+    }
+
+    public String getGenere() {
+        if (this.genere == null) {
+            return null;
+        }
+        return this.genere.getGenere();
     }
 }
