@@ -1,3 +1,4 @@
+/*
 package it.ternali.biblioteca.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -29,3 +30,4 @@ public class ErrorHandlerController implements ErrorController {
         return "error";
     }
 }
+*/

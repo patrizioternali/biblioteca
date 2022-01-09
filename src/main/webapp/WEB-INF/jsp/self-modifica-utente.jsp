@@ -13,8 +13,8 @@
     <div class="container">
         <div class="row g-5">
             <div class="col-md-7 col-lg-8">
-                <h4 class="my-3">Modifica utente: ${utente.username}</h4>
-                <form:form modelAttribute="utente_modify" action="/admin/gestione/utenti/conferma_modifica/${utente.id}" method="post">
+                <h4 class="my-3">Modifica il tuo profilo</h4>
+                <form:form modelAttribute="utente_modify" action="/utente/conferma-modifica/${utente.id}" method="post">
                 <hr class="my-4">
                 <div class="row g-3">
                     <div class="col-5">
@@ -40,7 +40,7 @@
 
 
                     <div class="mt-5">
-                        <button type="submit" class="btn btn-outline-info">Modifica</button>
+                        <button type="submit" class="btn btn-outline-info">Conferma modifica</button>
                     </div>
 
 

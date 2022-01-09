@@ -1,6 +1,7 @@
 package it.ternali.biblioteca.controller;
 
 import it.ternali.biblioteca.controller.service.LibroService;
+import it.ternali.biblioteca.controller.service.UtenteService;
 import it.ternali.biblioteca.model.Libro;
 import it.ternali.biblioteca.model.Stato;
 import it.ternali.biblioteca.model.Utente;
@@ -20,9 +21,11 @@ import java.util.List;
 public class CatalogoController {
 
     private final LibroService service;
+    private final UtenteService utenteService;
 
-    public CatalogoController(LibroService service) {
+    public CatalogoController(LibroService service, UtenteService utenteService) {
         this.service = service;
+        this.utenteService = utenteService;
     }
 
     @GetMapping("/show/{boolean}")
@@ -48,4 +51,5 @@ public class CatalogoController {
         }
         return modelAndView;
     }
+
 }

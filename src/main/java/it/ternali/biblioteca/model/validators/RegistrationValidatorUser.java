@@ -1,5 +1,6 @@
 package it.ternali.biblioteca.model.validators;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class RegistrationValidatorUser {
 
     @NotEmpty(message = "L'username non può essere vuoto.")

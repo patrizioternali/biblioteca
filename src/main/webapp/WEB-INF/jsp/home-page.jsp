@@ -37,7 +37,6 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                <div id="heart-btn" class="fas fa-heart"></div>
                 <div id="book-btn" class="fas fa-book"></div>
                 <div id="login-btn" class="fas fa-user"></div>
             </div>
@@ -82,9 +81,13 @@
         <div id="close-login-btn" class="fas fa-times"></div>
 
         <form action="">
-            <h3>profilo</h3>
-            <button class="button"><a href="registercheck">Registrati</a></button>
-            <button class="button"><a href="logincheck">Accedi</a></button>
+            <h3>il tuo profilo</h3>
+            <hr style="border-top: 3px solid #bbb">
+            <p style="color: black; text-align: center">USERNAME: ${utente.username}</p>
+            <p style="color: black; text-align: center">EMAIL: ${utente.email}</p><hr>
+            <p style="color: black; text-align: center">DATA DI NASCITA: ${utente.dataDiNascita}</p><hr>
+            <p style="color: green; text-align: center"><a href="/utente/modifica-form/${utente.id}">MODIFICA PROFILO</a></p>
+            <hr style="border-top: 3px solid #bbb">
         </form>
 
     </div>
@@ -127,7 +130,6 @@
                             <div class="swiper-slide box">
                                 <div class="icons">
                                     <a title="Modifica" href="/admin/gestione-catalogo/libro/modifica-libro-form/${libro.id}" class="fas fa-pen"></a>
-                                    <a title="Aggiungi ai preferiti" href="#" class="fas fa-heart"></a>
                                     <a title="Elimina" href="/admin/gestione-catalogo/libro/delete/${libro.id}" class="fas fa-times"></a>
                                 </div>
                                 <div class="image">
@@ -139,9 +141,6 @@
                     <c:when test="${admin == null}">
                         <c:forEach var="libro" items="${libridb}">
                             <div class="swiper-slide box">
-                                <div class="icons">
-                                    <a title="Aggiungi ai preferiti" href="#" class="fas fa-heart"></a>
-                                </div>
                                 <div class="image">
                                     <img src=${libro.immagine} alt="">
                                 </div>

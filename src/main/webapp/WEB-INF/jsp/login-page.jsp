@@ -13,6 +13,12 @@
     <body>
         <div class="container">
             <form class="form-signin" method="post" action="/login">
+                <c:if test="${login_error == true}">
+                    <h6 style="color: red">Errore, i dati inseriti non sono corretti.</h6>
+                </c:if>
+
+                <!-- RISOLVERE ERRORE QUANDO SI SBAGLIANO LE CREDENZIALI. -->
+
                 <h2 class="form-signin-heading">Accedi</h2>
                 <p>
                     <label for="username" class="sr-only">Username</label>

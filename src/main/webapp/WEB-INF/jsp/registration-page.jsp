@@ -15,7 +15,10 @@
             <form:form method="post" action="/register" modelAttribute="utente_register">
                 <h2 class="form-signin-heading">Registrati</h2>
                 <c:if test="${reg_error == true}">
-                    Errore, dati inseriti non validi.
+                    <h6>Errore, dati non validi.</h6>
+                </c:if>
+                <c:if test="${already_exist == true}">
+                    <h6>Utente gia' registrato</h6>
                 </c:if>
                 <p>
                     <label for="username" class="sr-only">Username</label>
@@ -36,6 +39,7 @@
                 <p>
                     <a href="/login">Login</a>
                 </p>
+                <input type="hidden" value="${_csrf.token}">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Registrati</button>
             </form:form>
         </div>

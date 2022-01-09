@@ -1,5 +1,6 @@
 package it.ternali.biblioteca.controller;
 
+import it.ternali.biblioteca.controller.events.AuthenticationFailure;
 import it.ternali.biblioteca.controller.service.UtenteService;
 import it.ternali.biblioteca.model.Ruolo;
 import it.ternali.biblioteca.model.validators.RegistrationValidatorUser;
@@ -13,6 +14,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
@@ -32,23 +36,34 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute("utente_register") RegistrationValidatorUser validatorUser,
-                                 BindingResult result, Model model) {
+    public ModelAndView register(@Valid @ModelAttribute("utente_register") RegistrationValidatorUser validatorUser,
+                                 BindingResult result, HttpServletResponse response) {
+        ModelAndView modelAndView;
         validatorUser.setRuolo(Ruolo.USER.toString());
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            return "redirect:/";
+        Authentication authentication;
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            System.out.println("Utente già autenticato.");
+            modelAndView = new ModelAndView("redirect:/homepage");
+        } else {
+            if (result.hasErrors()) {
+                System.out.println("Errore durante la registrazione");
+                modelAndView = new ModelAndView("registration-page");
+                response.setStatus(400);
+                modelAndView.addObject("reg_error", true);
+            } else {
+                boolean reg = service.save(validatorUser);
+                if (reg) {
+                    System.out.println("Registrazione andata a buon fine.");
+                    modelAndView = new ModelAndView("redirect:/homepage");
+                } else {
+                    System.out.println("Utente già registrato.");
+                    modelAndView = new ModelAndView("registration-page");
+                    modelAndView.addObject("already_exist", true);
+                }
+            }
         }
-        if (result.hasErrors()) {
-            model.addAttribute("reg_error", true);
-            System.out.println("Errore durante la registrazione");
-            return "redirect:/registercheck";
-        }
-        if (service.save(validatorUser)) {
-            System.out.println("Registrazione andata a buon fine.");
-            return "redirect:/homepage";
-        }
-        return "redirect:/registercheck";
+        return modelAndView;
     }
 
 }
