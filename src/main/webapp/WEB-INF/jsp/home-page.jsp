@@ -12,6 +12,8 @@
 
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
+        <link rel="icon" type="image/x-icon" href="../../image/favicon.ico">
+
         <!-- font awesome cdn link  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -55,7 +57,7 @@
                     </c:when>
                 </c:choose>
                 <c:if test="${admin == true}">
-                    <a href="/admin/gestione/utenti">GESTIONE UTENTI*</a>
+                    <a href="/admin/gestione/utenti">GESTIONE UTENTI</a>
                 </c:if>
                 <a href="/logout">LOGOUT</a>
             </nav>
@@ -76,7 +78,7 @@
 
     <!-- login form  -->
 
-    <div class="login-form-container">
+    <div class="login-form-container" style="text-align: center">
 
         <div id="close-login-btn" class="fas fa-times"></div>
 
@@ -88,6 +90,10 @@
             <p style="color: black; text-align: center">DATA DI NASCITA: ${utente.dataDiNascita}</p><hr>
             <p style="color: green; text-align: center"><a href="/utente/modifica-form/${utente.id}">MODIFICA PROFILO</a></p>
             <hr style="border-top: 3px solid #bbb">
+            <form action="/logout" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <a href="/logout" class="btn">Logout</a>
+            </form>
         </form>
 
     </div>
@@ -100,7 +106,7 @@
 
             <div class="content">
                 <h3>I libri del momento!</h3>
-                <p>Alla tua destra i libri piu popolari di questo periodo</p>
+                <p>Qui di fianco i 5 libri in tendenza!</p>
                 <a href="#" class="btn">compra ora</a>
             </div>
 
@@ -140,7 +146,7 @@
                     </c:when>
                     <c:when test="${admin == null}">
                         <c:forEach var="libro" items="${libridb}">
-                            <div class="swiper-slide box">
+                            <div class="swiper-slide boxe">
                                 <div class="image">
                                     <img src=${libro.immagine} alt="">
                                 </div>

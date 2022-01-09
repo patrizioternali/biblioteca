@@ -65,11 +65,13 @@ section {
 .heading span {
     font-size: 3rem;
     padding: .5rem 2rem;
-    color: var(--black);
+    color: var(--green);
     background: #fff;
     border: var(--border);
 }
-
+.exm{
+    font-size:14px;
+}
 .btn {
     margin-top: 1rem;
     display: inline-block;
@@ -151,7 +153,21 @@ section {
 #search-btn {
     display: none;
 }
-
+.bottone{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 4px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+.bottone:hover{
+    background: var(--dark-color);
+}
 .header .header-2 {
     background: var(--green);
 }
@@ -163,7 +179,7 @@ section {
 .header .header-2 .navbar a {
     color: #fff;
     display: inline-block;
-    padding: 1.2rem;
+    padding: 1rem;
     font-size: 1.7rem;
 }
 
@@ -387,6 +403,8 @@ section {
 
 .featured .featured-slider .box:hover .image {
     transform: translateY(6rem);
+}
+.featured .featured-slider .boxe:hover .image {
 }
 
 .featured .featured-slider .box .image img {
