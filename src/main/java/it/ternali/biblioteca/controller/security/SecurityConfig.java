@@ -52,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().csrfTokenRepository(new CookieCsrfTokenRepository()).and()
                 .authorizeRequests()
                 .antMatchers("/registercheck", "/register").permitAll()
+                .antMatchers("/js/**", "/css/**").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/catalogo-libri/show/true").hasAuthority("ADMIN")
                 .anyRequest().authenticated()

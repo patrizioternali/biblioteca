@@ -35,13 +35,13 @@
 
             <a href="#" class="logo" style="text-decoration:none;"> <i class="fas fa-book"></i> Biblioteca </a>
 
-            <form action="" class="search-form">
+            <%--<form action="" class="search-form">
                 <input type="search" name="" placeholder="Cerca qui..." id="search-box">
                 <label for="search-box" class="fas fa-search"></label>
-            </form>
+            </form>--%>
 
             <div class="icons">
-                <div id="search-btn" class="fas fa-search"></div>
+                <%--<div id="search-btn" class="fas fa-search"></div>--%>
                 <div id="login-btn" class="fas fa-user"></div>
             </div>
 
@@ -69,6 +69,7 @@
         <a href="#gestione-libri" class="fas fa-tags"></a>
         <a href="#gestione-catalogo" class="fas fa-comments"></a>
     </nav>
+
     <div class="login-form-container" style="text-align: center">
 
         <div id="close-login-btn" class="fas fa-times"></div>
@@ -99,16 +100,16 @@
                         <c:when test="${year_true == true}">
                             <c:forEach var="libro" items="${libri_filtrati}">
                                 <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-0 shadow">
+                                    <div class="card border-0 shadow" >
                                         <img src='${libro.immagine}' class="card-img-top" alt="...">
                                         <div class="card-body text-center">
-                                            <h6 class="card-title mb-0">${libro.titolo}</h6>
-                                            <div class="card-text text-black-50"><span style="color: #080710">Autore:</span> ${libro.autore}</div>
+                                            <h5 class="card-title mb-0">${libro.titolo}</h5>
+                                            <div class="card-text text-black-50"><span style="color: #080710">Autore</span> ${libro.autore}</div>
                                             <div class="card-text text-black-50"><span style="color: #080710">Anno di uscita:</span> ${libro.anno}</div>
                                             <div class="card-text text-black-50"><span style="color: #080710">Genere:</span> ${libro.genere}</div>
                                             <div class="card-text text-black-50"><span style="color: #080710">Stato:</span> <c:choose>
                                                 <c:when test="${libro.stato == 'DISPONIBILE'}">
-                                                    <span style="color: #4CAF50">${libro.stato}</span>
+                                                    <span style="color: green">${libro.stato}</span>
                                                 </c:when>
                                                 <c:when test="${libro.stato == 'NON DISPONIBILE'}">
                                                     <span style="color: red">${libro.stato}</span>
@@ -131,7 +132,7 @@
                                             <div class="card-text text-black-50"><span style="color: #080710">Genere:</span> ${libro.genere}</div>
                                             <div class="card-text text-black-50"><span style="color: #080710">Stato:</span> <c:choose>
                                                 <c:when test="${libro.stato == 'DISPONIBILE'}">
-                                                    <span style="color: #4CAF50">${libro.stato}</span>
+                                                    <span style="color: green">${libro.stato}</span>
                                                 </c:when>
                                                 <c:when test="${libro.stato == 'NON DISPONIBILE'}">
                                                     <span style="color: red">${libro.stato}</span>
@@ -156,15 +157,15 @@
                                     <div class="card-text text-black-50"><span style="color: #080710">Genere:</span> ${libro.genere}</div>
                                     <div class="card-text text-black-50"><span style="color: #080710">Stato:</span><c:choose>
                                         <c:when test="${libro.stato == 'DISPONIBILE'}">
-                                            <span style="color: #4CAF50">${libro.stato}</span>
+                                            <span style="color: green">${libro.stato}</span>
                                         </c:when>
                                         <c:when test="${libro.stato == 'NON DISPONIBILE'}">
                                             <span style="color: red">${libro.stato}</span>
                                         </c:when>
                                     </c:choose></div>
                                     <div class="card-text text-black-50">
-                                        <button type="button" class="btn btn-primary" onclick="location.href='/admin/gestione-catalogo/libro/modifica-libro-form/${libro.id}'">Modifica</button>
-                                        <button type="button" class="btn btn-danger" onclick="location.href='/admin/gestione-catalogo/libro/delete/${libro.id}'">Elimina</button>
+                                        <button type="button" class="btn btn-success" onclick="location.href='/admin/gestione-catalogo/libro/modifica-libro-form/${libro.id}'">Modifica</button>
+                                        <button type="button" class="btn btn-success" onclick="location.href='/admin/gestione-catalogo/libro/delete/${libro.id}'">Elimina</button>
                                     </div>
                                 </div>
                             </div>

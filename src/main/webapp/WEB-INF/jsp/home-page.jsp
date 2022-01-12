@@ -32,14 +32,21 @@
 
             <a href="#" class="logo"> <i class="fas fa-book"></i> Biblioteca </a>
 
-            <form action="" class="search-form">
+            <%--<form action="" class="search-form">
                 <input type="search" name="" placeholder="Cerca qui..." id="search-box">
                 <label for="search-box" class="fas fa-search"></label>
-            </form>
+            </form>--%>
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                <div id="book-btn" class="fas fa-book"></div>
+                <c:choose>
+                    <c:when test="${admin == true}">
+                        <a href="/catalogo-libri/show/true"><div id="book-btn" class="fas fa-book"></div></a>
+                    </c:when>
+                    <c:when test="${admin == null}">
+                        <a href="/catalogo-libri/show/false"><div id="book-btn" class="fas fa-book"></div></a>
+                    </c:when>
+                </c:choose>
                 <div id="login-btn" class="fas fa-user"></div>
             </div>
 
@@ -86,8 +93,8 @@
             <h3>il tuo profilo</h3>
             <hr style="border-top: 3px solid #bbb">
             <p style="color: black; text-align: center">USERNAME: ${utente.username}</p>
-            <p style="color: black; text-align: center">EMAIL: ${utente.email}</p><hr>
-            <p style="color: black; text-align: center">DATA DI NASCITA: ${utente.dataDiNascita}</p><hr>
+            <p style="color: black; text-align: center">EMAIL: ${utente.email}</p>
+            <p style="color: black; text-align: center">DATA DI NASCITA: ${utente.dataDiNascita}</p>
             <p style="color: green; text-align: center"><a href="/utente/modifica-form/${utente.id}">MODIFICA PROFILO</a></p>
             <hr style="border-top: 3px solid #bbb">
             <form action="/logout" method="post">
