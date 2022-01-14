@@ -42,7 +42,7 @@ public class UtenteModificaController {
         } else {
             Utente utente = service.findById(id);
             BeanUtils.copyProperties(validatorUser, utente);
-            service.save(utente);
+            service.save(utente); // USE TRY-CATCH
             System.out.println("Utente modificato correttamente");
             modelAndView = new ModelAndView("redirect:/homepage");
         }

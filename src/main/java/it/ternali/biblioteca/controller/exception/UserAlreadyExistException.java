@@ -1,7 +1,7 @@
 package it.ternali.biblioteca.controller.exception;
 
 public class UserAlreadyExistException extends Exception{
-    public UserAlreadyExistException(String message) {
-        super(message);
+    public UserAlreadyExistException() {
+        super();
     }
 }

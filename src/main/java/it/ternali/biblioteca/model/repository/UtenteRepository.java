@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface UtenteRepository extends CrudRepository<Utente, Long> {
     Utente findByEmail(String email);
-    Utente findByUsername(String username);
+    Optional<Utente> findByUsername(String username);
     List<Utente> findAll();
     void deleteById(Long id);
     Optional<Utente> findById(Long id);

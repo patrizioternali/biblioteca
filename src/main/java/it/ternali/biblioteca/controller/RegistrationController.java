@@ -1,6 +1,6 @@
 package it.ternali.biblioteca.controller;
 
-import it.ternali.biblioteca.controller.events.AuthenticationFailure;
+import it.ternali.biblioteca.controller.exception.UserAlreadyExistException;
 import it.ternali.biblioteca.controller.service.UtenteService;
 import it.ternali.biblioteca.model.Ruolo;
 import it.ternali.biblioteca.model.validators.RegistrationValidatorUser;
@@ -57,7 +57,6 @@ public class RegistrationController {
                     System.out.println("Registrazione andata a buon fine.");
                     modelAndView = new ModelAndView("redirect:/homepage");
                 } else {
-                    System.out.println("Utente già registrato.");
                     modelAndView = new ModelAndView("registration-page");
                     modelAndView.addObject("already_exist", true);
                 }

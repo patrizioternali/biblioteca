@@ -1,5 +1,6 @@
 package it.ternali.biblioteca.controller;
 
+import it.ternali.biblioteca.controller.exception.UserAlreadyExistException;
 import it.ternali.biblioteca.controller.service.UtenteService;
 import it.ternali.biblioteca.model.Ruolo;
 import it.ternali.biblioteca.model.Utente;
@@ -74,7 +75,7 @@ public class AdminUtenteController {
 
     @PostMapping("/utenti/aggiungi-utente")
     public ModelAndView aggiungiUtente(@Valid @ModelAttribute("add_user_validator") RegistrationValidatorUser addValidatorUser,
-                                       BindingResult result) {
+                                       BindingResult result) throws UserAlreadyExistException {
         ModelAndView modelAndView;
         if (addValidatorUser.getRuolo() == null) {
             addValidatorUser.setRuolo(Ruolo.USER.toString());
