@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.Set;
 
 public class AuthenticationSuccess implements AuthenticationSuccessHandler {
@@ -24,8 +25,11 @@ public class AuthenticationSuccess implements AuthenticationSuccessHandler {
                                         Authentication authentication) throws IOException {
         Set<String> ruoli = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         HttpSession session = request.getSession(false);
-        Utente utente = service.findByUsername(request.getParameter("username"));
-        session.setAttribute("utente", utente);
+        Optional<Utente> optional = service.findByUsername(request.getParameter("username"));
+        if (optional.isPresent()) {
+            Utente utente = optional.get();
+            session.setAttribute("utente", utente);
+        }
         if (ruoli.contains("ADMIN")) {
             session.setAttribute("admin", true);
             response.sendRedirect("/homepage");

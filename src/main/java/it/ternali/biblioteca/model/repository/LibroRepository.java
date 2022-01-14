@@ -12,4 +12,5 @@ public interface LibroRepository extends CrudRepository<Libro, Long> {
     List<Libro> findAll();
     Optional<Libro> findById(Long id);
     void deleteById(Long id);
+    Optional<Libro> findByTitolo(String titolo);
 }

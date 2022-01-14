@@ -16,7 +16,7 @@ public class Genere {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "nome_genere")
     private String genere;
     @OneToMany(mappedBy = "genere")

@@ -1,6 +1,5 @@
 package it.ternali.biblioteca.controller;
 
-import it.ternali.biblioteca.controller.exception.UserAlreadyExistException;
 import it.ternali.biblioteca.controller.service.UtenteService;
 import it.ternali.biblioteca.model.Ruolo;
 import it.ternali.biblioteca.model.validators.RegistrationValidatorUser;
@@ -54,7 +53,6 @@ public class RegistrationController {
             } else {
                 boolean reg = service.save(validatorUser);
                 if (reg) {
-                    System.out.println("Registrazione andata a buon fine.");
                     modelAndView = new ModelAndView("redirect:/homepage");
                 } else {
                     modelAndView = new ModelAndView("registration-page");

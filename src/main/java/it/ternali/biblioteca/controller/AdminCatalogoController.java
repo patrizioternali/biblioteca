@@ -44,7 +44,6 @@ public class AdminCatalogoController {
             modelAndView.addObject("error", true);
         } else {
             libroService.save(validatorLibro);
-            System.out.println("Libro salvato correttamente nel database");
             modelAndView = new ModelAndView("redirect:/catalogo-libri/show/true");
         }
         return modelAndView;
@@ -108,7 +107,6 @@ public class AdminCatalogoController {
             modelAndView.addObject("error", true);
         } else {
             service.save(validatorGenere);
-            System.out.println("Genere salvato correttamente nel database");
             modelAndView = new ModelAndView("redirect:/admin/gestione-catalogo/genere/lista-generi");
         }
         return modelAndView;
